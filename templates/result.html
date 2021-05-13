@@ -1,26 +1,43 @@
+{% extends "header.html" %}
+{% block content %}
 <html>
 
 <head>
     <title>Calculator</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
-    <div class="col">
-        <div class="title center">
-            <h3>First Follow Calculator</h3>
-        </div>
-        <div class="card">
-            <form class="col" action="http://localhost:5000" method="POST">
-                <p>Display the equation here</p>
-                <p>Display the answer here!!</p>
-                {{answer}}
-                <div class="center">
-                    <button class="button" type="submit">Re-calculate</button>
-                </div>
-            </form>
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Non-Terminal</th>
+                    <th>First</th>
+                    <th>Follow</th>
+                </tr>
+            </thead>
+            {%for nt in data.non_terminals%}
+
+            <tbody>
+                <tr>
+                    <td>Alvin</td>
+                    <td>{{data.FIRST[nt]}}</td>
+                    <td>{{data.FOLLOW[nt]}}</td>
+                </tr>
+            </tbody>
+            {%endfor%}
+
+        </table>
+        <div class="center">
+            <button class="button" type="submit">Re-calculate</button>
         </div>
     </div>
 </body>
 
 </html>
+
+{% endblock %}

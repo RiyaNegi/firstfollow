@@ -1,3 +1,5 @@
+{% extends "header.html" %}
+{% block content %}
 <html>
 
 <head>
@@ -5,47 +7,47 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body>
-	<div class="col">
-		<div class="title center">
+<body style="background-color: rgb(236, 236, 236);">
+	<div class="body col">
+		<!-- <div class="title center">
 			<h3>First Follow Calculator</h3>
-		</div>
+		</div> -->
 		<div class="card">
 			<form class="col" action="http://localhost:5000" method="POST">
 				<div class="row">
 					<div class="col">
 						<div class="text">No. of terminals</div>
-						<input class="inputBox" type="text" name="num" />
+						<input class="inputBox" type="text" name="not" />
 					</div>
 					<div class="col left">
 						<div class="text">Enter Terminals</div>
-						<input class="inputBox" type="text" name="num" />
+						<input class="inputBox" type="text" name="ts" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col">
 						<div class="text">No. of non-terminals</div>
-						<input class="inputBox" type="text" name="num" />
+						<input class="inputBox" type="text" name="nont" />
 					</div>
 					<div class="col left">
 						<div class="text">Enter Non-Terminals</div>
-						<input class="inputBox" type="text" name="num" />
+						<input class="inputBox" type="text" name="nts" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col">
 						<div class="text">No. of Productions</div>
-						<input class="inputBox" type="text" name="num" />
+						<input class="inputBox" type="text" name="nop" />
 					</div>
 					<div class="col left">
 						<div class="text">Enter Productions</div>
-						<input class="inputBox" type="text" name="num" />
+						<input class="inputBox" type="text" name="ps" />
 					</div>
 				</div>
 				<div class="row center">
 					<div class="col">
-						<div class="text">Enter starting center</div>
-						<input class="inputBox" type="text" name="num" />
+						<div class="text">Enter start symbol</div>
+						<input class="inputBox" type="text" name="ss" />
 					</div>
 				</div>
 				<div class="center">
@@ -53,8 +55,7 @@
 				</div>
 			</form>
 		</div>
-
-	</div>
 </body>
 
 </html>
+{% endblock %}
