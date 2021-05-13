@@ -1,9 +1,60 @@
 <html>
-    <body>
-        <form action = "http://localhost:5000/inputfromform" method = "POST">
-            <p>USER     :<input type = "text" name = "user" /></p>
-            <p>KEYWORDS :<input type = "text" name = "keywords" /></p>
-            <p><input type = "submit" value = "submit" /></p>
-        </form>
-    </body>
+
+<head>
+	<title>Calculator</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+	<div class="col">
+		<div class="title center">
+			<h3>First Follow Calculator</h3>
+		</div>
+		<div class="card">
+			<form class="col" action="http://localhost:5000" method="POST">
+				<div class="row">
+					<div class="col">
+						<div class="text">No. of terminals</div>
+						<input class="inputBox" type="text" name="num" />
+					</div>
+					<div class="col left">
+						<div class="text">Enter Terminals</div>
+						<input class="inputBox" type="text" name="num" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="text">No. of non-terminals</div>
+						<input class="inputBox" type="text" name="num" />
+					</div>
+					<div class="col left">
+						<div class="text">Enter Non-Terminals</div>
+						<input class="inputBox" type="text" name="num" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="text">No. of Productions</div>
+						<input class="inputBox" type="text" name="num" />
+					</div>
+					<div class="col left">
+						<div class="text">Enter Productions</div>
+						<input class="inputBox" type="text" name="num" />
+					</div>
+				</div>
+				<div class="row center">
+					<div class="col">
+						<div class="text">Enter starting center</div>
+						<input class="inputBox" type="text" name="num" />
+					</div>
+				</div>
+				<div class="center">
+					<button class="button" type="submit">Calculate</button>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</body>
+
 </html>

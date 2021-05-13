@@ -7,7 +7,7 @@ app.config["DEBUG"] = True
 def index():
     pass
 
-@app.route("/inputfromform",methods = ['POST','GET'])
+@app.route("/",methods = ['POST','GET'])
 def savekeywords():
     msg = ""
     # global product_keys
