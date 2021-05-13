@@ -19,7 +19,7 @@ def savekeywords():
         return redirect('/homepage')
         
     # print()
-    return render_template("app.html",msg = msg)
+    return render_template("result.html",msg = msg)
 
 if __name__ == "__main__":
     app.run()

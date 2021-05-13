@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="col">
+        <div class="title center">
+            <h3>First Follow Calculator</h3>
+        </div>
+        <div class="card">
+            <form class="col" action="http://localhost:5000" method="POST">
+                <p>Display the equation here</p>
+                <p>Display the answer here!!</p>
+                {{answer}}
+                <div class="center">
+                    <button class="button" type="submit">Re-calculate</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
