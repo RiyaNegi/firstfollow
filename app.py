@@ -225,4 +225,4 @@ def input_data():
     return render_template("app.html", data=data)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(threaded=True)
