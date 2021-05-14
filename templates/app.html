@@ -13,6 +13,7 @@
 			<h3>First Follow Calculator</h3>
 		</div> -->
 		<div class="card">
+			{% if data['starting_symbol']=="_" %}
 			<form class="col" action="http://localhost:5000" method="POST">
 				<div class="row">
 					<div class="col">
@@ -54,6 +55,36 @@
 					<button class="button" type="submit">Calculate</button>
 				</div>
 			</form>
+			{% else %}
+			<table>
+				<thead>
+					<tr>
+						<th>Non-Terminal</th>
+						<th>First</th>
+						<th>Follow</th>
+					</tr>
+				</thead>
+				{%for nt in data.non_terminals%}
+
+				<tbody>
+					<tr>
+						<td>{{nt}}</td>
+						<td>
+							{%for e in data.FIRST[nt]%}
+							{{e}},
+							{% endfor %}
+						</td>
+						<td>
+							{%for e in data.FOLLOW[nt]%}
+							{{e}},
+							{% endfor %}
+						</td>
+					</tr>
+				</tbody>
+				{%endfor%}
+
+			</table>
+			{%endif%}
 		</div>
 </body>
 
