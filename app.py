@@ -1,6 +1,7 @@
 import sys
 from flask import Flask , jsonify,redirect, request,render_template
-# sys.setrecursionlimit(60)
+from flask.helpers import url_for
+# sys.setrecursionlimit(2000)
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -87,95 +88,6 @@ def follow(nT):
     #print("returning for follow({})".format(nT),follow_)
     return follow_
 
-
-
-
-'''
-no_of_terminals=int(input("Enter no. of terminals: "))
-
-terminals = []
-
-print("Enter the terminals :")
-for _ in range(no_of_terminals):
-    terminals.append(input())
-
-no_of_non_terminals=int(input("Enter no. of non terminals: "))
-
-non_terminals = []
-
-print("Enter the non terminals :")
-for _ in range(no_of_non_terminals):
-    non_terminals.append(input())
-
-starting_symbol = input("Enter the starting symbol: ")
-
-no_of_productions = int(input("Enter no of productions: "))
-
-productions = []
-
-print("Enter the productions:")
-for _ in range(no_of_productions):
-    productions.append(input())
-
-
-#print("terminals", terminals)
-
-#print("non terminals", non_terminals)
-
-#print("productions",productions)
-
-
-productions_dict = {}
-
-for nT in non_terminals:
-    productions_dict[nT] = []
-
-
-print("\nproductions_dict",productions_dict)
-
-for production in productions:
-    nonterm_to_prod = production.split("->")
-    alternatives = nonterm_to_prod[1].split("/")
-    for alternative in alternatives:
-        productions_dict[nonterm_to_prod[0]].append(alternative)
-
-#print("productions_dict",productions_dict)
-
-#print("nonterm_to_prod",nonterm_to_prod)
-#print("alternatives",alternatives)
-
-
-FIRST = {}
-FOLLOW = {}
-
-for non_terminal in non_terminals:
-    FIRST[non_terminal] = set()
-
-for non_terminal in non_terminals:
-    FOLLOW[non_terminal] = set()
-
-#print("FIRST",FIRST)
-
-for non_terminal in non_terminals:
-    FIRST[non_terminal] = FIRST[non_terminal] | first(non_terminal)
-
-#print("FIRST",FIRST)
-
-
-FOLLOW[starting_symbol] = FOLLOW[starting_symbol] | {'$'}
-print(FOLLOW[starting_symbol])
-for non_terminal in non_terminals:
-    FOLLOW[non_terminal] = FOLLOW[non_terminal] | follow(non_terminal)
-
-#print("FOLLOW", FOLLOW)
-
-print("{: ^20}{: ^20}{: ^20}".format('Non Terminals','First','Follow'))
-for non_terminal in non_terminals:
-    print("{: ^20}{: ^20}{: ^20}".format(non_terminal,str(FIRST[non_terminal]),str(FOLLOW[non_terminal])))
-
-print(f"NT : {non_terminals}\tFirst : {FIRST}\tFollow : {FOLLOW}")
-
-'''
 @app.route("/result")
 def result():
     context = {
@@ -262,7 +174,7 @@ def input_data():
         print(f"NT : {non_terminals}\tFirst : {FIRST}\tFollow : {FOLLOW}")
 
         # pass
-        return redirect("/result")
+        return redirect(url_for('result'))
     return render_template("app.html")
 
 if __name__ == "__main__":
