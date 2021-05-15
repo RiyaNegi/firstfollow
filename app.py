@@ -6,6 +6,10 @@ from flask.helpers import url_for
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
+# non_terminals = ['A','B','C','D','E','F']
+# FIRST = {'A':{'!','a','ds','%'},'B':{'!','a','ds','%'},'C':{'!','a','ds','%'},'D':{'!','a','ds','%'},'E':{'!','a','ds','%'},'F':{'!','a','ds','%'},}
+# FOLLOW = {'A':{'v','k','*','#'},'B':{'v','k','*','#'},'C':{'v','k','*','#'},'D':{'v','k','*','#'},'E':{'v','k','*','#'},'F':{'v','k','*','#'},}
+
 no_of_terminals = 0
 terminals = []
 no_of_non_terminals = 0
@@ -197,19 +201,21 @@ def input_data():
         #print("FOLLOW", FOLLOW)
 
         # print("{: ^20}{: ^20}{: ^20}".format('Non Terminals','First','Follow'))
-        # for non_terminal in non_terminals:
-            # print("{: ^20}{: ^20}{: ^20}".format(non_terminal,str(FIRST[non_terminal]),str(FOLLOW[non_terminal])))
+        for non_terminal in non_terminals:
+          FIRST[non_terminal] = list(FIRST[non_terminal])
+          FOLLOW[non_terminal] = list(FOLLOW[non_terminal])
 
         # print(f"NT : {non_terminals}\tFirst : {FIRST}\tFollow : {FOLLOW}")
-        fol = FOLLOW.values()
-        fir = FIRST.values()
+        # fol = FOLLOW.values()
+        # fir = FIRST.values()
         data = {
         "starting_symbol":starting_symbol,
         "non_terminals":non_terminals,
+        "productions":productions_dict,
         "FIRST":FIRST,
         "FOLLOW":FOLLOW
         }
-
+        print("\nPRODUCTIONS_DICT : ", productions_dict)
         # pass
         return render_template("app.html", data=data)
     else:

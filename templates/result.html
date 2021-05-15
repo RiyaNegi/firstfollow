@@ -11,21 +11,21 @@
 
 <body>
     <div class="card">
-        <table>
+        <table class="centered">
             <thead>
                 <tr>
-                    <th>Non-Terminal</th>
-                    <th>First</th>
-                    <th>Follow</th>
+                    <th class="col s4">Non-Terminal</th>
+                    <th class="col s4">First</th>
+                    <th class="col s4">Follow</th>
                 </tr>
             </thead>
             {%for nt in data.non_terminals%}
 
-            <tbody>
+            <tbody class="centered">
                 <tr>
-                    <td>Alvin</td>
-                    <td>{{data.FIRST[nt]}}</td>
-                    <td>{{data.FOLLOW[nt]}}</td>
+                    <td class="col s4">Alvin</td>
+                    <td class="col s4">{{data.FIRST[nt]}}</td>
+                    <td class="col s4">{{data.FOLLOW[nt]}}</td>
                 </tr>
             </tbody>
             {%endfor%}

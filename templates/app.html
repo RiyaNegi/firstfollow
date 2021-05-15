@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body style="background-color: rgb(236, 236, 236);">
+<body>
 	<div class="body col">
 		<!-- <div class="title center">
 			<h3>First Follow Calculator</h3>
@@ -56,36 +56,64 @@
 				</div>
 			</form>
 			{% else %}
-			<table>
-				<thead>
-					<tr>
-						<th>Non-Terminal</th>
-						<th>First</th>
-						<th>Follow</th>
-					</tr>
-				</thead>
-				{%for nt in data.non_terminals%}
+			<div>
+				<span class="text">Data Productions:</span>
+				<hr className="container mt-2"
+					style=" outline: none; border: none; background-color: rgb(145, 145, 145); height: 1px;" />
+				<div class="text center">
+					{%for nt in data.non_terminals%}
+					{{nt + " "}} {{"->"}}
+					{% for i in range((data.productions[nt]|length) -1 )%}
+					{{data.productions[nt][i]}} /
+					{% endfor %} {{(data.productions[nt].pop())}}<br />
+					{% endfor %}
 
-				<tbody>
-					<tr>
-						<td>{{nt}}</td>
-						<td>
-							{%for e in data.FIRST[nt]%}
-							{{e}},
-							{% endfor %}
-						</td>
-						<td>
-							{%for e in data.FOLLOW[nt]%}
-							{{e}},
-							{% endfor %}
-						</td>
-					</tr>
-				</tbody>
-				{%endfor%}
+				</div>
+				<hr className="container mt-2"
+					style=" outline: none; border: none; background-color: rgb(145, 145, 145); height: 1px;" />
+				<table class="centered">
+					<thead>
+						<tr>
+							<th>Non-Terminal</th>
+							<th>First</th>
+							<th>Follow</th>
+						</tr>
+					</thead>
+					{%for nt in data.non_terminals%}
+					<tbody>
+						<tr>
+							<td>{{nt}}</td>
+							<td>
+								{%for i in range(data.FIRST[nt]|length) %}
+								{% if i == (data.FIRST[nt]|length -1)%}
+								{{data.FIRST[nt][i] + " "}}
+								{% else%}
+								{{data.FIRST[nt][i] + " "}},
+								{%endif%}
+								{% endfor %}
+							</td>
+							<td>
+								{%for i in range(data.FOLLOW[nt]|length) %}
+								{% if i == (data.FOLLOW[nt]|length -1)%}
+								{{data.FOLLOW[nt][i] + " "}}
+								{% else%}
+								{{data.FOLLOW[nt][i] + " "}},
+								{%endif%}
+								{% endfor %}
+							</td>
+						</tr>
+					</tbody>
+					{%endfor%}
 
-			</table>
+				</table>
+			</div>
 			{%endif%}
 		</div>
+		<div style="color: gray;">2021 |<a style="color: gray;" href="https://github.com/RiyaNegi/firstfollow"
+				target="_blank"> View source
+				code on github</a>
+		</div>
+	</div>
 </body>
 
 </html>
