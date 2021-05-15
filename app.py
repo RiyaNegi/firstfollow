@@ -1,7 +1,6 @@
 import sys
 from flask import Flask , jsonify,redirect, request,render_template
 from flask.helpers import url_for
-# sys.setrecursionlimit(200)
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -25,9 +24,6 @@ j=0
 alter_dict_check = {}
 
 def first(string):
-    #print("first({})".format(string))
-    # nt = string
-    # global j
     alternatives = []
     
     first_ = set()
@@ -46,12 +42,6 @@ def first(string):
         first_ = {'@'}
 
     else:
-        # if nt == string[0]:
-        #     if j<len(alternatives):
-        #         ++j
-        #         string = alternatives[j]
-            
-        # else:
         first_2 = first(string[0])
         if '@' in first_2:
             i = 1
@@ -104,15 +94,6 @@ def follow(nT):
                             follow_ = follow_ | follow_2
     #print("returning for follow({})".format(nT),follow_)
     return follow_
-
-# @app.route("/result")
-# def result():
-#     context = {
-#         "non_terminals":non_terminals,
-#         "FIRST":FIRST,
-#         "FOLLOW":FOLLOW
-#     }
-#     return render_template("result.html",data = context)
 
 @app.route("/",methods = ['POST','GET'])
 def input_data():
@@ -198,16 +179,11 @@ def input_data():
         for non_terminal in non_terminals:
             FOLLOW[non_terminal] = FOLLOW[non_terminal] | follow(non_terminal)
 
-        #print("FOLLOW", FOLLOW)
 
-        # print("{: ^20}{: ^20}{: ^20}".format('Non Terminals','First','Follow'))
         for non_terminal in non_terminals:
           FIRST[non_terminal] = list(FIRST[non_terminal])
           FOLLOW[non_terminal] = list(FOLLOW[non_terminal])
 
-        # print(f"NT : {non_terminals}\tFirst : {FIRST}\tFollow : {FOLLOW}")
-        # fol = FOLLOW.values()
-        # fir = FIRST.values()
         data = {
         "starting_symbol":starting_symbol,
         "non_terminals":non_terminals,

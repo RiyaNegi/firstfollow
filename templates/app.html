@@ -60,7 +60,7 @@
 				<span class="text">Data Productions:</span>
 				<hr className="container mt-2"
 					style=" outline: none; border: none; background-color: rgb(145, 145, 145); height: 1px;" />
-				<div class="text center">
+				<div class="text prod">
 					{%for nt in data.non_terminals%}
 					{{nt + " "}} {{"->"}}
 					{% for i in range((data.productions[nt]|length) -1 )%}
